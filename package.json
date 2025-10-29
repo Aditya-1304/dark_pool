@@ -1,18 +1,31 @@
 {
-  "license": "ISC",
+  "name": "dark-pool",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "app"
+  ],
   "scripts": {
     "lint:fix": "prettier */*.js \"*/**/*{.js,.ts}\" -w",
-    "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check"
+    "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check",
+    "test": "anchor test",
+    "build": "anchor build",
+    "deploy": "anchor deploy",
+    "dev:app": "cd app && npm run dev",
+    "build:app": "cd app && npm run build",
+    "relayer": "cargo run --bin relayer",
+    "copy:idl": "cp target/idl/dark_pool.json app/lib/ && cp target/types/dark_pool.ts app/lib/"
   },
   "dependencies": {
     "@coral-xyz/anchor": "^0.32.1",
-    "@radix-ui/react-dialog": "^1.1.15",
-    "@radix-ui/react-slot": "^1.2.3",
+    "@solana/web3.js": "^1.98.4",
     "@solana/wallet-adapter-base": "^0.9.27",
     "@solana/wallet-adapter-react": "^0.15.39",
     "@solana/wallet-adapter-react-ui": "^0.9.39",
     "@solana/wallet-adapter-wallets": "^0.19.37",
-    "@solana/web3.js": "^1.98.4",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.548.0",
